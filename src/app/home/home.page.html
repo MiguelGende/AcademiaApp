@@ -1,20 +1,107 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu side="start" contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item button>
+        <ion-label>Opción 1</ion-label>
+      </ion-item>
+      <ion-item button>
+        <ion-label>Opción 2</ion-label>
+      </ion-item>
+      <ion-item button (click)="logout()" *ngIf="isLoggedIn">
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-item>
+      <ion-item button (click)="goToLogin()" *ngIf="!isLoggedIn">
+        <ion-label>Login</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+<!-- El contenido principal de la página -->
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button> <!-- Este es el botón para abrir el menú -->
+      </ion-buttons>
+      <ion-title>Academia</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <!--Parte 1 -->
+
+    
+      <!-- Contenido principal: Vídeo en bucle -->
+      <swiper-container 
+    speed="300" 
+    pagination="true" 
+    pagination-clickable="true" 
+    effect="fade" 
+    loop="true"
+    autoplay="true"
+    autoplay-delay="4000">
+    @for (slide of sliderData; track slide.id) {
+      <swiper-slide>
+        
+          <video muted autoplay loop width="100%" height="auto">
+            <source [src]="slide.videoUrl" type="video/mp4">
+          </video>
+        
+          <ion-card-title class="video-title">{{ slide.title }}</ion-card-title>
+      
+      </swiper-slide>
+    }
+  </swiper-container>
+      
+    
+  </ion-content>
+<!--Parte 2 -->
+<ion-list>
+  <ion-list-header>
+    <ion-label>Categorías</ion-label>
+  </ion-list-header>
+  @for (category of categoriesData; track category.id) {
+    <ion-item>
+      <ion-icon [name]="category.icon" slot="start"></ion-icon>
+      <ion-label>{{ category.name }}</ion-label>
+    </ion-item>
+  }
+</ion-list>
+<!--Parte 3-->
+<ion-list>
+  <ion-list-header>
+    <ion-label>Noticias</ion-label>
+  </ion-list-header>
+  @for (news of newsData; track news.id) {
+    <ion-item>
+      <ion-label>
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.content }}</p>
+      </ion-label>
+    </ion-item>
+  }
+</ion-list>
+
+
+<!-- Pestañas condicionales -->
+<ion-footer *ngIf="isLoggedIn">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="profile">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Mi Perfil</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="library">
+        <ion-icon name="library"></ion-icon>
+        <ion-label>Cursos</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+
+</ion-footer>

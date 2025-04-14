@@ -1,0 +1,28 @@
+<!--<ion-content>
+  <swiper-container speed="200" pagination="true">
+    <swiper-slide><img src="https://drumeoblog.s3.amazonaws.com/beat/wp-content/uploads/2023/11/15110152/2022-07-14-30-day-drummer-gear-guide-Domino-181.png" alt=""></swiper-slide>
+    <swiper-slide><img src="https://burntsugarindex.com/bsac25/wp-content/uploads/2009/08/Swiss_Chris_h_03-1-1-683x1024.jpg" alt=""></swiper-slide>
+    <swiper-slide><img src="https://dyingscene.com/wp-content/uploads/2023/07/DSC1454NS-683x1024.jpg" alt=""></swiper-slide>
+  </swiper-container>
+
+  
+  <ion-button (click)="skipIntro()" expand="block">Continuar</ion-button>
+
+</ion-content>
+-->
+
+
+<ion-content>
+  <swiper-container [slidesPerView]="1" [pagination]="{ clickable: true }">
+  <swiper-slide  *ngFor="let slide of slides">
+    
+      <div class="slide-content">
+        <h1>{{ slide.title }}</h1>
+        <p>{{ slide.description }}</p>
+      </div>
+    
+  </swiper-slide>
+</swiper-container>
+
+  <ion-button expand="full" (click)="finishTutorial()">Continuar</ion-button>
+</ion-content>

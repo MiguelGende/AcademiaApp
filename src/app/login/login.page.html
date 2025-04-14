@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" (click)="goHome()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+ 
+
+<ion-content class="ion-padding">
+  <div class="login-container">
+    <form (ngSubmit)="login()">
+      <!-- Campo de Usuario -->
+      <ion-item>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="username" name="username" required></ion-input>
+      </ion-item>
+
+      <!-- Campo de Contraseña -->
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+      </ion-item>
+
+      <!-- Botón de Inicio de Sesión -->
+      <ion-button type="submit" expand="block" class="login-button" [disabled]="!username || !password">
+        Ingresar
+      </ion-button>
+    </form>
+
+    <!-- Separador -->
+    <div class="separator">
+      <p>O inicia sesión con:</p>
+    </div>
+
+    <!-- Botón de Google -->
+    <ion-button expand="block" (click)="loginWithGoogle()" color="primary">
+      <ion-icon slot="start" name="logo-google"></ion-icon>
+      Iniciar Sesión con Google
+    </ion-button>
+
+    <!-- Enlace de Registro -->
+    <ion-text>
+      <p class="register-link">
+        ¿No tienes una cuenta? <a href="#">Regístrate aquí</a>.
+      </p>
+    </ion-text>
+
+
+  </div>
+</ion-content>

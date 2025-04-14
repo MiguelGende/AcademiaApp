@@ -1,12 +1,101 @@
-import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { Component, OnInit, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NavController } from '@ionic/angular/standalone';
+import {
+  InfiniteScrollCustomEvent,
+  IonAvatar,
+  IonInfiniteScrollContent,
+  IonInfiniteScroll,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenu,
+  IonMenuButton,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular/standalone';
+import { CommonModule } from '@angular/common'; // Importa CommonModule para usar @if
+import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { DataService } from '../services/data.service';
+import { register } from 'swiper/element/bundle';
+
+register();
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent],
+  standalone: true, // Indica que este es un componente standalone
+  imports: [IonHeader, IonToolbar, CommonModule, IonContent, IonContent, IonHeader, IonMenu, IonMenuButton, IonToolbar, IonAvatar, IonContent, IonInfiniteScroll, IonInfiniteScrollContent, IonItem],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HomePage {
-  constructor() {}
+export class HomePage implements OnInit {
+
+  sliderData: any[] = [];
+  categoriesData: any[] = [];
+  newsData: any[] = [];
+  isLoggedIn: boolean = false;
+
+  @ViewChild(IonMenu) menu!: IonMenu;
+
+
+  constructor(private dataService: DataService, private authService: AuthService, private navController: NavController, private router: Router) {
+    this.sliderData = this.dataService.getSliderData(); // Obtener los datos del servicio
+
+    // Suscribirse al evento de navegación
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.menu.close();
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.categoriesData = this.dataService.getCategoriesData();
+    this.newsData = this.dataService.getNewsData();
+
+    // Suscribirse al estado de autenticación
+    this.authService.isLoggedIn$.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn; // Actualiza el estado local
+    });
+
+    // Cargar los datos del carrusel
+    this.sliderData = this.dataService.getSliderData();
+  }
+
+  nngAfterViewInit() {
+    const swiperContainer = document.querySelector('swiper-container');
+    const videos = swiperContainer?.querySelectorAll('video');
+  
+    if (videos) {
+      videos.forEach((video: HTMLVideoElement) => {
+        video.muted = true; // Asegurar que esté silenciado
+        video.addEventListener('loadeddata', () => {
+          console.log(`Video cargado: ${video.currentSrc}`);
+          video.play().catch((error) => {
+            console.error('Error al reproducir el video:', error);
+          });
+        });
+      });
+    } else {
+      console.error('No se encontraron videos.');
+    }
+  }
+
+  goToAnotherPage() {
+    this.navController.navigateForward('/home');
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }

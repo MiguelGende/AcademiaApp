@@ -1,0 +1,22 @@
+
+ion-content {
+  position: relative;
+  height: 100%;
+}
+
+/* contenedor swiper */
+swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* botón */
+ion-button {
+  position: absolute;
+  bottom: 25px; /* Distancia desde la parte inferior de la pantalla */
+  left: 50%; /* Centrado horizontal */
+  transform: translateX(-50%); /* Para que quede perfectamente centrado */
+  z-index: 10; /* Asegura que el botón quede por encima de otros elementos */
+}
+
+

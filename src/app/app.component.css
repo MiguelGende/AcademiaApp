@@ -1,0 +1,218 @@
+/* Estilos Globales */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  color: #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrado horizontal */
+  padding-top: 2rem; /* Espaciado desde el margen superior */
+  min-height: 100vh;
+}
+
+main.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinea elementos al inicio verticalmente */
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin-top: 0; /* Pegado al margen superior */
+  padding: 1.5rem; /* Espaciado interno */
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  gap: 4rem; /* Espacio entre los lados izquierdo y derecho */
+  position: relative;
+}
+
+/* Left Side - Logo y Título */
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.angular-logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 24px;
+  animation: float 6s ease-in-out infinite;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: transparent; /* Texto transparente */
+  background: linear-gradient(90deg, #ff7eb3, #ff758c);
+  -webkit-background-clip: text; /* Para navegadores basados en WebKit */
+  background-clip: text; /* Estándar moderno */
+  -webkit-text-fill-color: transparent; /* Alternativa para WebKit */
+  margin: 0;
+  position: relative;
+}
+
+/* Divider */
+.divider {
+  height: auto;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  margin: 0 4rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.divider::before {
+  left: -6px;
+}
+
+.divider::after {
+  right: -6px;
+}
+
+/* Right Side - Pills y Social Links */
+.right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.pill-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+  border: none;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pill svg {
+  margin-left: 0.75rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: #fff;
+}
+
+.pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.pill:hover::before {
+  left: 100%;
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-links a svg {
+  width: 24px;
+  height: 24px;
+  fill: #ff7eb3;
+}
+
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 126, 179, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.social-links a:hover::before {
+  left: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+  }
+
+  .pill-group {
+    flex-direction: column;
+    align-items: center;
+  }
+}

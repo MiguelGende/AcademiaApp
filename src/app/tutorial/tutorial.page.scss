@@ -1,0 +1,134 @@
+.slide-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--ion-color-primary);
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ion-color-medium);
+  margin-bottom: 40px;
+  max-width: 80%;
+}
+
+ion-button {
+  margin-top: 30px;
+  --padding-start: 24px;
+  --padding-end: 24px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-weight: 500;
+}
+
+.progress-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--ion-color-medium);
+  border-radius: 50%;
+  margin: 0 6px;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+  background-color: var(--ion-color-primary);
+  transform: scale(1.2);
+}
+
+/////////////////////////////////////////////////
+/// 
+
+
+/* home.page.scss */
+
+/* Estilos del contenedor principal */
+.swiper-container {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+/* Estilos del contenido de cada slide */
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 250px; /* Altura fija para los slides */
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slide-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #3880ff; /* Color primario de Ionic */
+}
+
+.slide-content p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Personalización de los indicadores (paginación) */
+swiper-container::part(pagination) {
+  bottom: 10px;
+}
+
+swiper-container::part(bullet) {
+  background-color: #ccc;
+  opacity: 1;
+}
+
+swiper-container::part(bullet-active) {
+  background-color: #3880ff;
+}
+
+/* Personalización de los botones de navegación */
+swiper-container::part(button-next),
+swiper-container::part(button-prev) {
+  color: #3880ff;
+}
+
+swiper-container::part(button-next):hover,
+swiper-container::part(button-prev):hover {
+  color: #0056b3;
+}
