@@ -33,3 +33,35 @@ export class DataService {
     return this.newsData;
   }
 }
+
+// TODO Obtener noticias de la base de datos
+/*
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class DataService {
+  private apiUrl = environment.apiUrl;
+
+  constructor(private http: HttpClient) {}
+
+  // Obtener categorías desde el backend
+  getCategories(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/categories`);
+  }
+
+  // Obtener noticias (todas o filtradas por categoría)
+  getNews(categoryId?: number): Observable<any> {
+    let params = new HttpParams();
+    if (categoryId) {
+      params = params.set('category_id', categoryId.toString());
+    }
+
+    return this.http.get(`${this.apiUrl}/news`, { params });
+  }
+}
+*/

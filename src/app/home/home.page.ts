@@ -99,3 +99,45 @@ export class HomePage implements OnInit {
     this.router.navigate(['/login']);
   }
 }
+
+
+//TODO Lógica para mostrar las noticias
+/*
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
+})
+export class HomePage implements OnInit {
+  categories: any[] = [];
+  news: any[] = [];
+  selectedCategoryId: number | null = null;
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    this.loadCategories();
+    this.loadNews();
+  }
+
+  loadCategories() {
+    this.dataService.getCategories().subscribe((response) => {
+      this.categories = response.data;
+    });
+  }
+
+  loadNews() {
+    this.dataService.getNews(this.selectedCategoryId!).subscribe((response) => {
+      this.news = response.data;
+    });
+  }
+
+  onCategorySelected(categoryId: number) {
+    this.selectedCategoryId = categoryId;
+    this.loadNews();
+  }
+}
+*/

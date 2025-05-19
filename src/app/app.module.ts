@@ -12,3 +12,17 @@ export const appConfig: ApplicationConfig = {
     IonicStorageModule.forRoot().providers!
   ]
 };
+
+
+// TODO Instalar HttpClientModule
+/*
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  imports: [
+    HttpClientModule,
+    ...
+  ]
+})
+export class AppModule {}
+*/

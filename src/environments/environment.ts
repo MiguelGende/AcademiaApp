@@ -14,3 +14,13 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+
+
+// TODO Configurar entorno para obtener los datos de BD
+// environment.ts
+/*
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8000/api' // cambia por tu dominio en producción
+};
+*/

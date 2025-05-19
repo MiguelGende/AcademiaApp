@@ -105,3 +105,25 @@
 
 
 </ion-footer>
+
+<!--
+TODO Interfaz para mostrar las noticias y las categorías
+
+ ##Selector de categorías## 
+<ion-segment [(ngModel)]="selectedCategoryId" (ionChange)="onCategorySelected(selectedCategoryId)">
+  <ion-segment-button *ngFor="let category of categories" [value]="category.id">
+    {{ category.name }}
+  </ion-segment-button>
+</ion-segment>
+
+ ##Noticias##
+<ion-list>
+  <ion-item *ngFor="let item of news">
+    <ion-label>
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.content }}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+-->
